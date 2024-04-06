@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/darkBlue"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/greetingText"
+            style="@style/HeadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/greeting" />
+
+        <include
+            android:id="@+id/homeSearchBar"
+            layout="@layout/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/greetingText"
+            android:layout_marginTop="20dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/baseline_shopping_bag_24" />
+
+        <TextView
+            android:id="@+id/deliveryTo"
+            style="@style/SpanBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/homeSearchBar"
+            android:layout_marginTop="20dp"
+            android:text="@string/delivery_to" />
+
+        <TextView
+            style="@style/SubheadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/deliveryTo"
+            android:layout_marginTop="5dp"
+            android:text="@string/address_here" />
+
+        <TextView
+            android:id="@+id/within"
+            style="@style/SpanBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/homeSearchBar"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:text="@string/within" />
+
+        <TextView
+            style="@style/SubheadingWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/within"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:text="@string/time" />
+    </RelativeLayout>
+
+
+</LinearLayout>

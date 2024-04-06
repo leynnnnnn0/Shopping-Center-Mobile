@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item> <!-- Adjust text size as per your requirement -->
+        <!-- You can add more text appearance attributes here if needed -->
+    </style>
+
+    <style name="HeadingWhite">
+        <item name="android:textColor">@color/headerWhite</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SpanBlack">
+        <item name="android:textColor">@color/subheadingWhite</item>
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="SubheadingWhite">
+        <item name="android:textColor">@color/headerWhite</item>
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+</resources>
