@@ -1,6 +1,11 @@
 package com.leynnnnnn.shoppingapp;
 
-public class ItemInfo {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class ItemInfo implements Parcelable {
     private int id;
     private int image;
     private String name;
@@ -15,6 +20,36 @@ public class ItemInfo {
         this.price = price;
         this.category = category;
     }
+
+    public ItemInfo(int id, int image, String name, double price, String category, String description) {
+        this.id = id;
+        this.image = image;
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.description = description;
+    }
+
+    protected ItemInfo(Parcel in) {
+        id = in.readInt();
+        image = in.readInt();
+        name = in.readString();
+        price = in.readDouble();
+        category = in.readString();
+        description = in.readString();
+    }
+
+    public static final Creator<ItemInfo> CREATOR = new Creator<ItemInfo>() {
+        @Override
+        public ItemInfo createFromParcel(Parcel in) {
+            return new ItemInfo(in);
+        }
+
+        @Override
+        public ItemInfo[] newArray(int size) {
+            return new ItemInfo[size];
+        }
+    };
 
     public String getDescription() {
         return description;
@@ -62,5 +97,20 @@ public class ItemInfo {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(image);
+        dest.writeString(name);
+        dest.writeDouble(price);
+        dest.writeString(category);
+        dest.writeString(description);
     }
 }

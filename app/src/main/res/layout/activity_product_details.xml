@@ -1,10 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ProductDetails">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/back_icon" />
+
+    <ImageView
+        android:id="@+id/imageDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/empty_image"
+        android:contentDescription="@string/image_description"
+        android:layout_gravity="center_horizontal"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/box_border"
+        android:layout_marginTop="20dp">
+
+        <ImageButton
+            android:id="@+id/addToFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_description"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/favorite_icon" />
+
+        <TextView
+            android:id="@+id/nameDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_name"
+            style="@style/HeadingBlack"/>
+
+        <TextView
+            android:id="@+id/priceDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            style="@style/SubheadingBlack"
+            android:textColor="@color/darkBlue"
+            android:layout_below="@id/nameDetail"
+            android:fontFamily="@font/manrope_bold"/>
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details"
+            android:layout_below="@id/priceDetail"
+            style="@style/SubheadingBlack"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/detailsDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lorem"
+            android:layout_below="@id/details"/>
+    </RelativeLayout>
+
+</LinearLayout>

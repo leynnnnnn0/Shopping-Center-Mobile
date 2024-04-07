@@ -1,14 +1,9 @@
 package com.leynnnnnn.shoppingapp;
 
-import android.os.Bundle;
+import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,19 +12,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Favorite extends Fragment {
-    DatabaseReference dbRef;
-    List<ItemInfo> favorites = new ArrayList<>();
-    ItemInfo[] favoritesList;
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_favorite, container, false);
-        FavoriteDb.getFavorites();
-        dbRef = FirebaseDatabase.getInstance().getReference().child("Favorites");
+public interface FavoriteDb {
+    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Favorites");
+    ArrayList<ItemInfo> favorites = new ArrayList<>();
+
+    static void addToFavorite(ItemInfo itemInfo, Context context) {
+        dbRef.push().setValue(itemInfo).addOnSuccessListener(unused -> Toast.makeText(context, "Added to favorites.", Toast.LENGTH_SHORT).show());
+    }
+
+    static void getFavorites() {
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -45,8 +37,6 @@ public class Favorite extends Fragment {
                     favorites.add(new ItemInfo(id, image, name, price, category, description));
 
                 }
-                favoritesList = favorites.toArray(new ItemInfo[0]);
-                Log.d("message", "" + favoritesList.length);
             }
 
             @Override
@@ -54,9 +44,6 @@ public class Favorite extends Fragment {
 
             }
         });
-
-
-
-        return rootView;
     }
+
 }
